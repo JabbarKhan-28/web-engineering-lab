@@ -1,0 +1,19 @@
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #0b5fff;
+  color: #ffffff;
+  padding: 8px;
+  z-index: 100;
+}
+.skip-link:focus-visible {
+  top: 0;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #0b5fff;
+  outline-offset: 2px;
+}
