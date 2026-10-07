@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Jabbar Khan's portfolio showcasing web development skills, projects, and experience."
+    />
     <title>Web Engineering Lab</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -10,17 +14,21 @@
     <a href="#main" class="skip-link">Skip to main content</a>
     <header>
       <h1 id="greeting"></h1>
-      <nav>
+      <nav class="nav-link">
         <ul>
-          <li><a href="#schedule" aria-current="location">office hours</a></li>
-          <li><a href="#feedback">send feedback</a></li>
+          <li>
+            <a href="#schedule" aria-current="location" class="nav-link"
+              >Office Hours</a
+            >
+          </li>
+          <li><a href="#feedback" class="nav-link">send feedback</a></li>
         </ul>
       </nav>
     </header>
 
     <main id="main">
       <section id="schedule">
-        <h2>Office Hours</h2>
+        <h2 id="schedule-heading">Office Hours</h2>
         <table>
           <caption>
             Weekly office hours
@@ -35,18 +43,31 @@
             <tr>
               <td>Monday</td>
               <td>
-                <time datetime="10:00">10:00</time>–<time datetime="11:00">11:00</time>
+                <time datetime="10:00">10:00</time>–<time datetime="11:00"
+                  >11:00</time
+                >
               </td>
             </tr>
           </tbody>
         </table>
 
         <figure>
-          <svg role="img" aria-labelledby="pin-title" width="24" height="24" viewBox="0 0 24 24">
+          <svg
+            role="img"
+            aria-labelledby="pin-title"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
             <title id="pin-title">Location pin</title>
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#0b3d91"/>
+            <path
+              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+              fill="currentColor"
+            />
           </svg>
-          <figcaption>All office hours are held in Room 214.</figcaption>
+          <figcaption class="text-muted">
+            All office hours are held in Room 214.
+          </figcaption>
         </figure>
       </section>
 
@@ -58,13 +79,8 @@
         <h2>Send Feedback</h2>
         <form>
           <label for="name">Name:</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            required
-          />
-
+          <input type="text" name="name" id="name" required />
+          <p></p>
           <label for="email">Email:</label>
           <input
             type="email"
@@ -73,7 +89,9 @@
             required
             aria-describedby="email-hint"
           />
-          <span id="email-hint">We will only use this to reply to you.</span>
+          <p class="text-muted" id="email-hint">
+            We will only use this to reply to you.
+          </p>
 
           <fieldset>
             <legend>Topic</legend>
