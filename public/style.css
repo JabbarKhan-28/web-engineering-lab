@@ -1,12 +1,10 @@
 @layer reset, base, components, utilities;
-
 @layer reset {
   *,
   *::before,
   *::after {
     box-sizing: border-box;
   }
-
   body,
   h1,
   h2,
@@ -15,28 +13,20 @@
     margin: 0;
   }
 }
-
 @layer base {
   :root {
     color-scheme: light dark;
-
     --space: 1rem;
-
     --color-bg: light-dark(oklch(98% 0.01 255), oklch(20% 0.02 255));
-
     --color-text: light-dark(oklch(25% 0.02 255), oklch(94% 0.01 255));
-
     --color-accent: light-dark(oklch(45% 0.18 255), oklch(75% 0.12 255));
-
     --color-surface: color-mix(
       in oklch,
       var(--color-bg) 92%,
       var(--color-accent)
     );
-
     --color-border: color-mix(in oklch, var(--color-text) 55%, var(--color-bg));
   }
-
   body {
     font-family: system-ui, sans-serif;
     line-height: 1.5;
@@ -44,31 +34,68 @@
     background-color: var(--color-bg);
     color: var(--color-text);
   }
-
   main {
     max-inline-size: 60rem;
     margin-inline: auto;
     padding-block: 1rem;
   }
 }
-
 @layer components {
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space);
+    padding-block-end: var(--space);
+    border-block-end: 1px solid var(--color-border);
+  }
+  nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  figure {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  #schedule {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space);
+    align-items: start;
+  }
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--space);
+  }
+  form button {
+    justify-self: flex-end;
+  }
+  input:not([type="radio"]),
+  textarea {
+    inline-size: 100%;
+  }
   form p {
     margin-block: 0.5rem 1rem;
   }
-
+  tr.selected th,
+  tr.selected td {
+    background: color-mix(in oklch, var(--color-accent) 20%, var(--color-bg));
+  }
   :where(nav, ul, li) a {
     color: var(--color-accent);
   }
-
   .nav-link {
     color: var(--color-accent);
   }
-
   a[aria-current="location"] {
     color: crimson;
   }
-
   .skip-link {
     position: absolute;
     top: -40px;
@@ -78,11 +105,9 @@
     padding: 8px;
     z-index: 100;
   }
-
   .skip-link:focus-visible {
     top: 0;
   }
-
   a:focus-visible,
   button:focus-visible,
   input:focus-visible,
@@ -90,28 +115,36 @@
     outline: 3px solid var(--color-accent);
     outline-offset: 2px;
   }
-
   input,
   textarea,
   button {
     font: inherit;
   }
-
   button {
     color: var(--color-bg);
     background: var(--color-accent);
   }
-
   button:hover {
     background: color-mix(in oklch, var(--color-accent), black 15%);
   }
-
   svg {
     color: var(--color-accent);
   }
+  tr.selected th,
+  tr.selected td {
+    background: color-mix(in oklch, var(--color-accent) 20%, var(--color-bg));
+  }
+  @media (max-width: 40rem) {
+    #schedule,
+    form {
+      grid-template-columns: 1fr;
+    }
+  }
 }
-
 @layer utilities {
+  .span-all {
+    grid-column: 1 / -1;
+  }
   .text-muted {
     color: #47596d;
   }
