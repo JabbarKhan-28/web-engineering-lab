@@ -18,9 +18,11 @@ export function getRequired<T extends Element>(
   root: ParentNode = document,
 ): T {
   const element = root.querySelector<T>(selector);
+
   if (element === null) {
     throw new Error(`Missing element: ${selector}`);
   }
+
   return element;
 }
 

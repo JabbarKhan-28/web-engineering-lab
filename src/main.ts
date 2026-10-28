@@ -11,26 +11,32 @@ const slots: Slot[] = [
   { day: "Wednesday", start: "14:00", end: "15:00", room: "Room 214" },
 ];
 
-const status = getRequired<HTMLParagraphElement>("#status");
+const status = getRequired<HTMLParagraphElement>("#booking-status");
 const tbody = getRequired<HTMLTableSectionElement>("#schedule tbody");
 const nextBooking = makeCounter();
 
-tbody.addEventListener("click", async (event: MouseEvent) => {
+tbody.addEventListener("click", async (event: MouseEvent): Promise<void> => {
   const target = event.target;
+
   if (!(target instanceof Element)) return;
 
   const button = target.closest<HTMLButtonElement>("button[data-day]");
-  const row = target.closest("tr");
+  const row = target.closest<HTMLTableRowElement>("tr");
+
   if (button === null || row === null) return;
 
-  const slot = slots.find((s) => s.day === button.dataset.day);
+  const day = button.dataset.day;
+  if (day === undefined) return;
+
+  const slot = slots.find((s) => s.day === day);
   if (slot === undefined) return;
 
   status.textContent = `Updating ${slot.day}…`;
-  await delay(1000);
+  await delay("1000");
 
   const booked = row.classList.toggle("selected");
-  const count = document.querySelectorAll("#schedule tr.selected").length;
+  const count = tbody.querySelectorAll("tr.selected").length;
+
   status.textContent = booked
     ? `Booking #${nextBooking()} confirmed: ${describeSlot(slot)}. ${count} of ${slots.length} slots booked.`
     : `Booking for ${slot.day} cancelled. ${count} of ${slots.length} slots booked.`;

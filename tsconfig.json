@@ -9,5 +9,5 @@
     "outDir": "public",
     "noEmitOnError": true
   },
-  "include": ["src", "src/main.ts", "public/script.js"]
+  "include": ["src"]
 }
