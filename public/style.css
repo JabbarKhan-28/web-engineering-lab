@@ -26,6 +26,7 @@
       var(--color-accent)
     );
     --color-border: color-mix(in oklch, var(--color-text) 55%, var(--color-bg));
+    --color-error: light-dark(oklch(45% 0.2 25), oklch(75% 0.15 25));
   }
   body {
     font-family: system-ui, sans-serif;
@@ -130,6 +131,16 @@
   svg {
     color: var(--color-accent);
   }
+
+  .error {
+    display: block;
+    color: var(--color-error);
+  }
+
+  input[aria-invalid="true"] {
+    border-color: var(--color-error);
+  }
+
   tr.selected th,
   tr.selected td {
     background: color-mix(in oklch, var(--color-accent) 20%, var(--color-bg));
