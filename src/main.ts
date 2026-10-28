@@ -32,7 +32,7 @@ tbody.addEventListener("click", async (event: MouseEvent): Promise<void> => {
   if (slot === undefined) return;
 
   status.textContent = `Updating ${slot.day}…`;
-  await delay("1000");
+  await delay(1000);
 
   const booked = row.classList.toggle("selected");
   const count = tbody.querySelectorAll("tr.selected").length;
